@@ -30,7 +30,7 @@ app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
 });
 
 const port = process.env.PORT || 3111;
-app.listen(port, () => {
+export const server = app.listen(port, () => {
     console.log(`[server]: Server is running at http://localhost:${port}`);
 });
 

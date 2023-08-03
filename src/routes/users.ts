@@ -25,7 +25,10 @@ router.get(
     async (req: Request, res: Response) => {
         res.status(200).json(
             await userModel
-                .find(null, Object.keys(userModel.schema.obj))
+                .find(
+                    null,
+                    Object.keys(userModel.schema.obj).filter((prop) => prop !== 'password'),
+                )
                 .sort(req.query.created ? { created: req.query.created as 'asc' | 'desc' } : {}),
         );
     },
